@@ -9,6 +9,12 @@ const jwt = require("jsonwebtoken");
 
 export const dynamic = "force-dynamic";
 
+export const OPTIONS = async (request) => {
+  return new Response("", {
+    status: 200,
+  });
+};
+
 export async function POST(request) {
   const headersList = headers();
   const authorizationHeader = headersList.get("authorization") || "";
@@ -46,9 +52,6 @@ export async function POST(request) {
       { status: 200 },
     );
   } catch (error) {
-    return Response.json(
-      { message: error.message },
-      { status: 403 },
-    );
+    return Response.json({ message: error.message }, { status: 403 });
   }
 }
