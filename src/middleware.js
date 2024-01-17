@@ -14,6 +14,7 @@ export function middleware(req) {
     // from the incoming request
     req.headers.get("origin")
 
+    console.log('origin >> ', origin);
     // if the origin is an allowed one,
     // add it to the 'Access-Control-Allow-Origin' header
     if (allowedOrigins.includes(origin)) {
