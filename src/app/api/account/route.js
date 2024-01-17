@@ -11,10 +11,7 @@ export async function POST(request) {
   const accessToken = authorizationHeader.replace("Bearer ", "");
 
   if (!accessToken) {
-    return Response.json(
-      { message: "Unauthorize" },
-      { status: 401, headers: responseHeaders },
-    );
+    return Response.json({ message: "Unauthorize" }, { status: 401 });
   }
 
   try {
@@ -30,13 +27,9 @@ export async function POST(request) {
       },
       {
         status: 200,
-        headers: responseHeaders,
       },
     );
   } catch (error) {
-    return Response.json(
-      { message: error.message },
-      { status: 403, headers: responseHeaders },
-    );
+    return Response.json({ message: error.message }, { status: 403 });
   }
 }

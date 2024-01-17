@@ -15,10 +15,7 @@ export async function POST(request) {
   const ssoToken = authorizationHeader.replace("Bearer ", "");
 
   if (!ssoToken) {
-    return Response.json(
-      { message: "Unauthorize" },
-      { status: 401, headers: responseHeaders },
-    );
+    return Response.json({ message: "Unauthorize" }, { status: 401 });
   }
 
   try {
@@ -31,7 +28,7 @@ export async function POST(request) {
     } else {
       return Response.json(
         { message: "SSO Token is already used" },
-        { status: 403, headers: responseHeaders },
+        { status: 403 },
       );
     }
 
@@ -46,12 +43,12 @@ export async function POST(request) {
         account: { ...findUser, refresh: "", password: "", sso: "" },
         accessToken,
       },
-      { status: 200, headers: responseHeaders },
+      { status: 200 },
     );
   } catch (error) {
     return Response.json(
       { message: error.message },
-      { status: 403, headers: responseHeaders },
+      { status: 403 },
     );
   }
 }
