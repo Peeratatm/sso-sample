@@ -12,7 +12,7 @@ export function middleware(req) {
 
     // retrieve the HTTP "Origin" header 
     // from the incoming request
-    req.headers.get("origin")
+    const origin = req.headers.get("origin")
 
     console.log('origin >> ', origin);
     // if the origin is an allowed one,
